@@ -73,51 +73,6 @@ def getTwoHightestPoint(img):
 	return hightest_x1,hightest_x2, max(hightest_y1, hightest_y2)
 
 # 覆盖图片
-def coverImgs2(img, imgs,x1,x3, y1,x2,y2):
-	sp=img.size
-	h1=sp[1]
-	w1=sp[0]
-
-	sp=imgs.size
-	h2=sp[1]
-	w2=sp[0]
-
-	x_begin = x_end = 0
-	y_end = 0
-
-	# 获取覆盖边界，以免超过图片范围
-	if w2 - x2 > w1 - x1:
-		x_end = w1
-	else:
-		x_end = w1 - ((w1 - x1) - (w2 - x2))
-
-	if x2 > x1:
-		x_begin = 0
-	else:
-		x_begin = (x1) - (x2)
-
-	if h2 - y2 > h1 - y1:
-		y_end = h1
-	else:
-		y_end = h1 - ((h1 - y1) - (h2 - y2))
-
-	pixels = img.load()
-	for yh in range(y1, y_end):
-		for xw in range(x_begin, x_end):
-			# 将不为透明的点覆盖到对应位置
-			color_d = imgs.getpixel(((xw - x1) + x2,(yh - y1) + y2))
-			if xw < x1 or xw > x3:
-				pixels[xw,yh] = color_d
-			else:
-				if(color_d[3] == 255):
-					pixels[xw,yh] = color_d
-
-	# 裁剪边框  重置尺寸1寸
-	img = img.crop((x_begin+3,0,x_end-3,y_end))#.resize((295,413))
-
-	return img
-
-# 覆盖图片
 def coverImgs1(img, img_l, img_m, img_r,x1,x3, y1,y2):
 	sp=img.size
 	h1=sp[1]
@@ -157,14 +112,14 @@ def coverImgs1(img, img_l, img_m, img_r,x1,x3, y1,y2):
 			try:
 				if xw < x1:
 					color_d = img_l.getpixel((xw, h2_h - (h1-yh)))
-					pixels[xw,yh] = color_d
 				elif xw >= x3:
 					color_d = img_r.getpixel((xw - x3, h2_h - (h1-yh)))
-					pixels[xw,yh] = color_d
 				else:
 					color_d = img_m.getpixel((xw - x1, h2_h - (h1-yh)))
-					if(color_d[3] == 255):
+
+				if(color_d[3] > 150):
 						pixels[xw,yh] = color_d
+
 			except:
 				print(xw, x1, x3, w1,img_l.size, (xw, h2_h - (h1-yh)))
 				break

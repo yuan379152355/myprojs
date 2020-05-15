@@ -1,0 +1,15 @@
+{
+	"path":"D:\\packages\\TEST",
+	"orderfile":"order.txt",
+	"dirs":
+	{
+		"client": "client",
+		"lbm_oracle_release": "lbm_oracle_release",
+		"kcbpspd_release": "kcbpspd_release",
+		"qtclient": "qtclient",
+		"AutoOffer": "AutoOffer",
+		"UnifyTrade": "UnifyTrade",
+		"Srvkpms": "Srvkpms,SrvKpms"
+	},
+	"result":"D:\\result"
+}
