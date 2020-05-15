@@ -1,7 +1,7 @@
 {
 	"path":"D:\\packages\\TEST",
 	"orderfile":"order.txt",
-	"dirs":
+	"dirs_cover":
 	{
 		"client": "client",
 		"lbm_oracle_release": "lbm_oracle_release",
@@ -10,6 +10,10 @@
 		"AutoOffer": "AutoOffer",
 		"UnifyTrade": "UnifyTrade",
 		"Srvkpms": "Srvkpms,SrvKpms"
+	},
+	"dirs_order":
+	{
+		"sql_update": "sql_update,Sql_update"
 	},
 	"result":"D:\\result"
 }
